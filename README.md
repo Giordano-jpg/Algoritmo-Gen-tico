@@ -1,12 +1,17 @@
 # ¿Qué es un Algoritmo Genético (AG)?
 
-<b>Los AG son técnicas de optimización que simulan la evolución natural para resolver problemas.</b> En ste caso, se basa en generar soluciones iniciales (cromosomas), evaluarlas con una función de aptitud (fitness) y mejorarlas mediante mutaciones y cruzamientos. El proceso es iterativo y se enfoca en seleccionar las mejores soluciones de cada generación.
+<b>Los AG son técnicas de optimización que simulan la evolución natural para resolver problemas.</b> 
+
+En este caso, se basa en generar soluciones iniciales (cromosomas), evaluarlas con una función de aptitud (fitness) y mejorarlas mediante mutaciones y cruzamientos. El proceso es iterativo y se enfoca en seleccionar las mejores soluciones de cada generación.
 
 # ¿Qué es el Problema del Agente Viajero (TSP):
 
-<b>Es un problema clásico de optimización que consiste en encontrar el recorrido más corto para visitar un conjunto de ciudades y volver al punto de origen sin repetir ciudades.</b> En este caso, el problema será resuelto usando un algoritmo genético, donde:
-* Los cromosomas representan los recorridos de las ciudades.
-* La función de aptitud evalúa la distancia total de cada recorrido.
+<b>Es un problema clásico de optimización que consiste en encontrar el recorrido más corto para visitar un conjunto de ciudades y volver al punto de origen sin repetir ciudades.</b> 
+
+En este caso, el problema será resuelto usando un algoritmo genético, donde:
+
+* Los <ins>cromosomas</ins> representan los recorridos de las ciudades.
+* La función de <ins>aptitud</ins> evalúa la distancia total de cada recorrido.
 
 # Componentes principales del algoritmo genético:
 
