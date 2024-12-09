@@ -19,11 +19,15 @@ def leer_tsp(ruta_archivo):
         if nodo_seccion:
             partes = line.split()
             if len(partes) == 3:
-                _, x, y = partes  # Ignorar el índice
-                coords.append((float(x), float(y)))
+                identificador, x, y = partes
+                coords.append((int(identificador), float(x), float(y)))
 
     return coords
 
+# El objetivo de este código es poder utilizarlo en otros archivos
 # Ejemplo de uso
-ruta = "qa194.tsp"
-coordenadas = leer_tsp(ruta)
+#ruta = "qa194.tsp"
+#coordenadas = leer_tsp(ruta)
+
+#for ciudad in coordenadas:
+    #print(ciudad)
