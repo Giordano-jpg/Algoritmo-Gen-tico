@@ -39,16 +39,23 @@ for ciudad in coordenadas:
 def distancia_euclidiana_np(p1, p2):
     return np.linalg.norm(np.array(p2) - np.array(p1))
 
-# Lista vacía para su posterior uso
-distancia_calculada = []
+# Calcular todas las distancias
+distancias = []
+for i in range(len(coordenadas)):
+    for j in range(len(coordenadas)):
+        distancias.append(distancia_euclidiana_np(coordenadas[i], coordenadas[j]))
 
-# Calcular la distancia de cada coordenada y guardarla en una lista.
-for i in range(len(coordenadas)-1):
-    distancia_calculada.append(distancia_euclidiana_np(coordenadas[i], coordenadas[i+1]))
+# Validar que se calculen 194 x 194 distancias
+print("Número total de distancias calculadas:", len(distancias))  # Esto debería ser 194 * 194 = 37636
 
-# Imprimir valores calculados
-for i in distancia_calculada:
-    print(i)
 
-# Obtener el recorrido más óptimo
-print("La distancia más corta es:", min(distancia_calculada))
+# Crear una lista para almacenar las distancias mayores a 0
+distancias_validas = []
+for distancia in distancias:
+    # Ignorar la distancia a sí mismo (0.0)
+    if distancia > 0: 
+        distancias_validas.append(distancia)
+
+# Calcular la distancia más corta de las distancias válidas
+distancia_mas_corta = min(distancias_validas)
+print("La distancia más corta es:", distancia_mas_corta)
