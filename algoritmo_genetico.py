@@ -71,9 +71,19 @@ print(f"Entre la ciudad {ciudad1 + 1} y la ciudad {ciudad2 + 1}")  # +1 para aju
 
 
 # funcion de mutacion para obtener la cadena "hijo"
-def mutacion():
+def generar_padre():
     cantidad_ciudades= len(coordenadas) # cantidad de ciudades
-    padre= list(random.shuffle(range(1,cantidad_ciudades+1))) # lista de números del 1 al 194, que despues se mezclan los números
+    padre = list(range(1, cantidad_ciudades + 1))  # Crear la lista de ciudades
+    random.shuffle(padre)  # Mezclar la lista
+    return padre
+
+# guardamos los padres en variables para usarlo más tarde
+padre1= generar_padre()
+padre2= generar_padre()
+
+# función mutación para usar los hijos
+def mutacion(padre):
+    
 
     tamaño_subcadena= random.randint(2,len(padre)-1) # sacamos un valor aleatorio para una subcadena
     indice_inicio= random.randint(0, len(padre) - tamaño_subcadena) # índice aleatorio de inicio
@@ -83,7 +93,55 @@ def mutacion():
     #print(subcadena_invertida)
     return hijo # devolver la lista "hijo"
 
-hijo= mutacion() # guardar el "hijo" en una variable
-#print(hijo) # imprimir la cadena si se quiere visualizar
+hijo1= mutacion(padre1) # guardar el "hijo" en una variable
+hijo2= mutacion(padre2) 
+
+# funcion de técnica de cruzamiento de ciclos
+def cruzamiento_ciclos(padre1, padre2):
+    hijo1 = [0] * len(padre1)  # Lista vacía para hijo 1
+    hijo2 = [0] * len(padre2)  # Lista vacía para hijo 2
+    visitados_hijo1 = [False] * len(padre1)  # Lista de booleanos para saber si ya está visitado en hijo1
+    visitados_hijo2 = [False] * len(padre2)  # Lista de booleanos para saber si ya está visitado en hijo2
+
+    # Empezamos con el primer elemento del padre1 y padre2
+    idx = 0
+    while not all(visitados_hijo1) and not all(visitados_hijo2):
+        if not visitados_hijo1[idx]:
+            # Tomamos el valor de padre1 y lo asignamos a hijo1
+            hijo1[idx] = padre1[idx]
+            visitados_hijo1[idx] = True
+
+            # Buscamos la posición del valor de padre1 en padre2
+            pos_en_padre2 = padre2.index(padre1[idx])
+
+            # Tomamos el valor correspondiente de padre2 y lo asignamos a hijo2
+            hijo2[pos_en_padre2] = padre2[pos_en_padre2]
+            visitados_hijo2[pos_en_padre2] = True
+
+        # Incrementamos el índice para continuar con el siguiente elemento
+        idx += 1
+
+    
+    # Ahora rellenamos los espacios vacíos en hijo1 con los valores restantes de padre2
+    for i in range(len(hijo1)):
+        if hijo1[i] == 0:
+            hijo1[i] = padre2[i]
+
+    # Hacemos lo mismo para hijo2, rellenando con los valores restantes de padre1
+    for i in range(len(hijo2)):
+        if hijo2[i] == 0:
+            hijo2[i] = padre1[i]
+
+    
+    return hijo1, hijo2 # devolver una tupla con las 2 variables de cada hijo
+
+
+# si se desea ver el resultado quitar el "#" del print
+#print(cruzamiento_ciclos(padre1,padre2))
+
+    
+
+
+
 
 
