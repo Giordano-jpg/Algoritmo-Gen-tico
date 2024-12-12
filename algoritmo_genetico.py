@@ -37,23 +37,23 @@ for ciudad in coordenadas:
     print(ciudad)
 
 # Fórmula euclidiana (Para calcular la distancia entre dos puntos)
-def distancia_euclidiana_np(p1, p2):
+def aptitud(p1, p2): # formula euclidiana
     return np.linalg.norm(np.array(p2) - np.array(p1))
 
 # Calcular todas las distancias y guardar los índices de las ciudades
 distancias = []
 for i in range(len(coordenadas)):
     for j in range(len(coordenadas)):
-        distancia = distancia_euclidiana_np(coordenadas[i][1:], coordenadas[j][1:])
-        distancias.append((distancia, i, j))  # Guardar la distancia y los índices
+        distancia = aptitid(coordenadas[i][1:], coordenadas[j][1:])
+        distancias.append((distancia, i, j))  # Guardar la distancia y los índices [(distancia, ciudad i, ciudad j)...]
 
-# Crear una lista para almacenar las distancias mayores a 0 porque en la lista se han guardado distancias con ciudades mismas
+# Crear una lista para almacenar las distancias mayores a 0 porque en la lista se han guardado distancias con ciudades mismas:
 distancias_validas = []
 for distancia in distancias:
     if distancia[0] > 0:  # Ignorar distancias iguales a 0
         distancias_validas.append(distancia)
 
-# Buscar la distancia mínima
+# Buscar la distancia mínima:
 distancia_mas_corta = distancias_validas[0][0] # primera instancia más corta
 ciudad1 = distancias_validas[0][1] # primera ciudad
 ciudad2 = distancias_validas[0][2] # segunda ciudad
@@ -61,7 +61,7 @@ ciudad2 = distancias_validas[0][2] # segunda ciudad
 # iterar sobre las ciudades
 for distancia, i, j in distancias_validas:
     if distancia < distancia_mas_corta:
-        distancia_mas_corta = distancia
+        distancia_mas_corta = distancia # Almacena la distancia más corta/mínima
         ciudad1 = i
         ciudad2 = j
 
