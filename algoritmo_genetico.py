@@ -1,12 +1,12 @@
 import numpy as np
 import random
 
-# Leer el archivo y guardar el ID y las coordenadas en la variable Ciudads
+# Leer el archivo (.tsp) y guardar el ID y las coordenadas en la variable Ciudads
 def leer_tsp(ruta_archivo):
     with open(ruta_archivo, 'r') as archivo:
         lines = archivo.readlines()
 
-    # Encontrar la sección NODE_COORD_SECTION
+    # Encontrar la sección NODE_COORD_SECTION del archivo .tsp
     coords = []
     nodo_seccion = False
 
