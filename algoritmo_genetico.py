@@ -44,7 +44,7 @@ def aptitud(p1, p2): # formula euclidiana
 distancias = []
 for i in range(len(coordenadas)):
     for j in range(len(coordenadas)):
-        distancia = aptitid(coordenadas[i][1:], coordenadas[j][1:])
+        distancia = aptitud(coordenadas[i][1:], coordenadas[j][1:])
         distancias.append((distancia, i, j))  # Guardar la distancia y los índices [(distancia, ciudad i, ciudad j)...]
 
 # Crear una lista para almacenar las distancias mayores a 0 porque en la lista se han guardado distancias con ciudades mismas:
