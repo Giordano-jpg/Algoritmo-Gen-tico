@@ -2,7 +2,7 @@
 
 <b>Los AG son técnicas de optimización que simulan la evolución natural para resolver problemas.</b> 
 
-En este caso, se basa en generar soluciones iniciales, evaluarlas con una función de aptitud y mejorarlas mediante mutaciones y cruzamientos. El proceso es iterativo y se enfoca en seleccionar las mejores soluciones de cada generación.
+En este caso, se basa en generar soluciones iniciales, evaluarlas con una función de aptitud (fitness) y mejorarlas mediante mutaciones y cruzamientos. El proceso es iterativo y se enfoca en seleccionar las mejores soluciones de cada generación.
 
 # ¿Qué es el Problema del Agente Viajero (TSP):
 
@@ -14,38 +14,47 @@ En este caso, el problema será resuelto usando un algoritmo genético.
 
 1. **Leer las coordenadas de las ciudades:**
    
-   Crear una función para leer un archivo .tsp y almacenar las coordenadas.
-
-2. **Calcular distancias y aptitud:**
-   
-   Implementar una función para calcular la distancia total de una ruta.
-   
-   Crear una función que evalúe la aptitud de una ruta: mayor aptitud para rutas más cortas.
+   Crear una función para leer un archivo .tsp y almacenar las coordenadas en una estructura adecuada ({id, x, y}).
 
 4. **Generar población inicial:**
 
-   Crear rutas iniciales aleatorias (padres) que representen posibles soluciones.
+   Crear rutas iniciales aleatorias (permutaciones de las ciudades/padres) para formar la población inicial.
 
-5. **Cruzamiento (por ciclos):**
+5. **<ins>Bucle</ins> del algoritmo genético:**
 
-   Implementar un método de cruzamiento para generar hijos a partir de los padres seleccionados.
+   Iterar los siguientes pasos hasta cumplir el criterio de parada:
+   
+   Definir los siguientes parámetros:
+   
+   - Tamaño de la población.
+   - Criterio de parada (número máximo de generaciones).
 
-6. **Mutación:**
+   1. **Calcular distancias y aptitud:**
+   
+      Implementar una función que calcule las distancias entre dos ciudades usando la fórmula euclidiana.
+   
+      Dada una ruta completa, calcule su distancia total y el valor de aptitud.
 
-   Crear una función que modifique aleatoriamente una ruta (como invertir una subcadena).
+   2. **Selección por ruleta:**
+   
+      Seleccionar padres basados en la aptitud.
 
-7. **Selección por ruleta:**
+   3. **Cruzamiento (por ciclos):**
+   
+      Implementar el método de cruzamiento por ciclos para generar hijos válidos a partir de dos rutas padres.
 
-   Diseñar un mecanismo para seleccionar individuos (rutas) en proporción a su aptitud.
+   4. **Mutación (por inversión):**
+   
+      Reemplazar la población actual con los nuevos individuos generados.
 
-8. **Bucle del algoritmo genético:**
+   5. **Crear la nueva población:**
+   
+      Calcular la distancia total de cada ruta y su aptitud.
 
-   En cada generación: (por orden de listado)
+   6. **Verificar el criterio de parada:**
+   
+      Continuar si no se cumple el criterio; detener si se cumple.
 
-   - Seleccionar padres.
-   - Aplicar cruzamiento y mutación para crear una nueva población.
-   - Evaluar la aptitud y repetir el proceso hasta un criterio de parada.
-
-9. **Resultado final:**
+8. **Resultado final:**
 
    Mostrar la mejor ruta encontrada y su distancia.
