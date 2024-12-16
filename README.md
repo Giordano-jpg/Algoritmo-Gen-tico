@@ -4,7 +4,7 @@
 
 En este caso, se basa en generar soluciones iniciales, evaluarlas con una función de aptitud (fitness) y mejorarlas mediante mutaciones y cruzamientos. El proceso es iterativo y se enfoca en seleccionar las mejores soluciones de cada generación.
 
-# ¿Qué es el Problema del Agente Viajero (TSP):
+# ¿Qué es el Problema del Agente Viajero (TSP)?
 
 <b>Es un problema clásico de optimización que consiste en encontrar el recorrido más corto para visitar un conjunto de ciudades y volver al punto de origen sin repetir ciudades.</b> 
 
