@@ -68,46 +68,6 @@ def calcular_distancia_total(ruta, coordenadas):
    return distancia_total
 
 
-"""# Obtener la ruta más corta:
-
-
-# Calcular todas las distancias y guardar los índices de las ciudades
-distancias = []
-for i in range(len(coordenadas)):
-   for j in range(len(coordenadas)):
-       distancia = calcular_distancia(coordenadas[i][1:], coordenadas[j][1:])
-       distancias.append((distancia, i, j))  # Guardar la distancia y los índices [(distancia, ciudad i, ciudad j)...]
-
-
-# Crear una lista para almacenar las distancias mayores a 0 porque en la lista se han guardado distancias con ciudades mismas:
-distancias_validas = []
-for distancia in distancias:
-   if distancia[0] > 0:  # Ignorar distancias iguales a 0
-       distancias_validas.append(distancia)
-
-
-# Buscar la distancia mínima:
-distancia_mas_corta = distancias_validas[0][0] # primera instancia más corta
-ciudad1 = distancias_validas[0][1] # primera ciudad
-ciudad2 = distancias_validas[0][2] # segunda ciudad
-
-
-# iterar sobre las ciudades
-for distancia, i, j in distancias_validas:
-   if distancia < distancia_mas_corta:
-       distancia_mas_corta = distancia # Almacena la distancia más corta/mínima
-       ciudad1 = i
-       ciudad2 = j
-
-
-# Mostrar los resultados
-print(f"La distancia más corta es: {distancia_mas_corta}")
-print(f"Entre la ciudad {ciudad1 + 1} y la ciudad {ciudad2 + 1}")  # +1 para ajustar al identificador original
-
-
-"""
-
-
 # Función de aptitud
 def calcular_aptitud(ruta, coordenadas):
    distancia_total = calcular_distancia_total(ruta, coordenadas)
@@ -122,15 +82,6 @@ def generar_padre(cantidad_ciudades):
    random.shuffle(padre)  # Mezclar la lista
    return padre
 
-
-""""
-# funcion de mutacion para obtener la cadena "hijo"
-def generar_padre():
-   cantidad_ciudades= len(coordenadas) # cantidad de ciudades
-   padre = list(range(1, cantidad_ciudades + 1))  # Crear la lista de ciudades
-   random.shuffle(padre)  # Mezclar la lista
-   return padre
-"""
 # Crear la población inicial
 def crear_poblacion(tamano_poblacion, cantidad_ciudades):
    return [generar_padre(cantidad_ciudades) for _ in range(tamano_poblacion)]
@@ -148,17 +99,6 @@ for i, ruta in enumerate(poblacion_inicial):
    print(f"Ruta {i + 1}: {ruta} - Distancia total: {distancia:.2f} - Aptitud: {aptitud:.6f}")
 
 
-
-
-
-
-""""
-# guardamos los padres en variables para usarlo más tarde
-padre1= generar_padre()
-padre2= generar_padre()
-"""
-
-
 # función mutación para usar los hijos
 def mutacion(padre):
 
@@ -170,10 +110,6 @@ def mutacion(padre):
    hijo = padre[:indice_inicio] + subcadena_invertida + padre[indice_inicio + tamaño_subcadena:] # sacamos la cadena final hijo
    #print(subcadena_invertida)
    return hijo # devolver la lista "hijo"
-
-
-#hijo1= mutacion(padre1) # guardar el "hijo" en una variable
-#hijo2= mutacion(padre2)
 
 
 # funcion de técnica de cruzamiento de ciclos
@@ -221,12 +157,6 @@ def cruzamiento_ciclos(padre1, padre2):
 
   
    return hijo1, hijo2 # devolver una tupla con las 2 variables de cada hijo
-
-
-
-
-# si se desea ver el resultado quitar el "#" del print
-# print(cruzamiento_ciclos(padre1,padre2))
 
 
 # Método de selección por ruleta
@@ -325,7 +255,7 @@ def mutation(individual, mutation_rate=0.01):
 
 
 # Ejemplo de hijo
-offspring = [0, 1, 3, 5, 2, 4, 6]
+#offspring = [0, 1, 3, 5, 2, 4, 6]
 
 
 # Aplicamos la mutación
@@ -359,9 +289,6 @@ def evolucionar(poblacion, coordenadas, tasa_mutacion=0.01):
        nueva_poblacion.extend([hijo1, hijo2])
   
    return nueva_poblacion
-
-
-
 
 # Función para ejecutar el algoritmo genético
 def ejecutar_algoritmo(coordenadas, tamano_poblacion, generaciones, tasa_mutacion):
